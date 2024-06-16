@@ -1,40 +1,33 @@
 import React from 'react';
+import Card from '../Card';
 import useData from './useData';
 import './style.scss';
 
 export default function VehicleList() {
-  // eslint-disable-next-line no-unused-vars
   const [loading, error, vehicles] = useData();
 
+
   if (loading) {
-    return <div data-testid="loading">Loading</div>;
+    return <div data-testid="loading" role="status">Loading</div>;
   }
 
   if (error) {
-    return <div data-testid="error">{ error }</div>;
+    return <div data-testid="error" role="alert">{error}</div>;
+  }
+
+  if (!vehicles || vehicles.length === 0) {
+    return <div data-testid="no-data">No vehicles available</div>;
   }
 
   return (
-    <div data-testid="results">
-      <p>List of vehicles will be displayed here</p>
-      <p>
-        Visit
-        <a href="/api/vehicles.json" target="_blank"> /api/vehicles.json</a>
-        {' '}
-        (main endpoint)
-      </p>
-      <p>
-        Visit
-        <a href="/api/vehicle_fpace.json" target="_blank">/api/vehicle_fpace.json</a>
-        {' '}
-        (detail endpoint - apiUrl)
-      </p>
-      <p>
-        Visit
-        <a href="/api/vehicle_xf.json" target="_blank">/api/vehicle_xf.json</a>
-        {' '}
-        (vehicle without any price)
-      </p>
-    </div>
+    <section data-testid="results" className='VehicleList'>
+      <ul className='VehicleList__grid'>
+        {vehicles.map((vehicle) => (
+          <li key={vehicle.id}>
+            <Card vehicle={vehicle} />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

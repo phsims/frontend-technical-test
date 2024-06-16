@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import VehicleList from '..';
 import useData from '../useData';
 
+
 jest.mock('../useData');
 
 describe('<VehicleList /> Tests', () => {
@@ -12,6 +13,7 @@ describe('<VehicleList /> Tests', () => {
 
     expect(queryByTestId('loading')).not.toBeNull();
     expect(queryByTestId('error')).toBeNull();
+    expect(queryByTestId('no-data')).toBeNull();
     expect(queryByTestId('results')).toBeNull();
   });
 
@@ -21,11 +23,22 @@ describe('<VehicleList /> Tests', () => {
 
     expect(queryByTestId('loading')).toBeNull();
     expect(queryByTestId('error')).not.toBeNull();
+    expect(queryByTestId('no-data')).toBeNull();
+    expect(queryByTestId('results')).toBeNull();
+  });
+
+  it('Should show no-data if loading is finished and there are no results', () => {
+    useData.mockReturnValue([false, false, []]);
+    const { queryByTestId } = render(<VehicleList />);
+
+    expect(queryByTestId('loading')).toBeNull();
+    expect(queryByTestId('error')).toBeNull();
+    expect(queryByTestId('no-data')).not.toBeNull();
     expect(queryByTestId('results')).toBeNull();
   });
 
   it('Should show results if loading successfully finished', () => {
-    useData.mockReturnValue([false, false, 'results']);
+    useData.mockReturnValue([false, false, [{ apiUrl: '/api/xj.json', id: 'xj', price: '£40,000' }]]);
     const { queryByTestId } = render(<VehicleList />);
 
     expect(queryByTestId('loading')).toBeNull();

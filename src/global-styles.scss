@@ -1,5 +1,35 @@
-.root {
-  margin: 14px;
-  padding: 12px;
-  z-index: 12;
+* {
+    box-sizing: border-box;
 }
+
+// I dont have access to the correct font-family, so I will use a similar one
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: "AvenirNext", "arial", "helvetica", sans-serif;
+    color: #4a4f54;
+    letter-spacing: 0.02rem;
+    line-height: 1.5rem;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width:1200px;
+    max-width: 100%;
+
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
