@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import VehicleList from '..';
 import useData from '../useData';
 
-
 jest.mock('../useData');
 
 describe('<VehicleList /> Tests', () => {
@@ -38,11 +37,14 @@ describe('<VehicleList /> Tests', () => {
   });
 
   it('Should show results if loading successfully finished', () => {
-    useData.mockReturnValue([false, false, [{ apiUrl: '/api/xj.json', id: 'xj', price: '£40,000' }]]);
+    useData.mockReturnValue([false, false, [{
+      apiUrl: '/api/xj.json', id: 'xj', price: '£40,000', media: [{ url: 'image.jpg', name: 'image' }]
+    }]]);
     const { queryByTestId } = render(<VehicleList />);
 
     expect(queryByTestId('loading')).toBeNull();
     expect(queryByTestId('error')).toBeNull();
+    expect(queryByTestId('no-data')).toBeNull();
     expect(queryByTestId('results')).not.toBeNull();
   });
 });

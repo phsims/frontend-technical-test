@@ -6,7 +6,6 @@ import './style.scss';
 export default function VehicleList() {
   const [loading, error, vehicles] = useData();
 
-
   if (loading) {
     return <div data-testid="loading" role="status">Loading</div>;
   }
@@ -20,8 +19,8 @@ export default function VehicleList() {
   }
 
   return (
-    <section data-testid="results" className='VehicleList'>
-      <ul className='VehicleList__grid'>
+    <section data-testid="results" className="VehicleList">
+      <ul className="VehicleList__grid">
         {vehicles.map((vehicle) => (
           <li key={vehicle.id}>
             <Card vehicle={vehicle} />

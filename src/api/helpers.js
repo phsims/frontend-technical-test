@@ -7,7 +7,7 @@
 
 export async function request(apiUrl) {
   // required for fetch to work in node.  should move this to a config file
-  const URL = 'http://localhost:8080';
+  const URL = process.env.VERCEL_URL || 'http://localhost:8080';
   try {
     const response = await fetch(`${URL}/${apiUrl}`);
     if (!response.ok) {
@@ -15,7 +15,6 @@ export async function request(apiUrl) {
     }
     return await response.json();
   } catch (error) {
-    console.error(`Failed to fetch from ${apiUrl}:`, error.message); 
     throw new Error(`Failed to fetch from ${apiUrl}: ${error.message}`);
   }
 }

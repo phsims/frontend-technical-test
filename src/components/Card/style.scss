@@ -1,79 +1,87 @@
-@import '../../mixins.scss';
+@import "../../mixins.scss";
 
 .card {
-    border: solid 1px #eff1f1;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
+  border: solid 1px #eff1f1;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
 
-    &__image-wrapper {
-        max-width:25%;
-        width: 200px;
-        height: auto;
-        flex-shrink: 0;
-        line-height: 0;
+  &__image-wrapper {
+    flex-shrink: 0;
+    height: auto;
+    line-height: 0;
+    max-width: 25%;
+    width: 200px;
 
-        &__picture { 
-            display: block;
-            &__img{
-                width:100%;
-            }
-        }
+    &__picture { 
+      display: block;
+
+
     }
 
-    &__content {
-        padding: 1rem;
-        flex-grow: 1;
-
-        &-title {
-            margin: 0 0 0.5rem;
-            color: #0c121c;
-            text-transform: uppercase;
-            font-size: 1.6rem;
-            letter-spacing: .08rem;
-            line-height: 1.6rem;
-            font-weight: 700;
-
-
-        }
-
-        &-price {
-            margin: 0 0 1rem;
-        }
-        &-description {
-            margin: 0 ;
-
-        }
+    &__picture__img {
+      width: 100%;
     }
+  }
+
+  &__content {
+    flex-grow: 1;
+    padding: 1rem;
+
+    &-title {
+      color: #0c121c;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: .08rem;
+      line-height: 1.6rem;
+      margin: 0 0 .5rem;
+      text-transform: uppercase;
+
+
+    }
+
+    &-price {
+      margin: 0 0 1rem;
+    }
+
+    &-description {
+      margin: 0 ;
+
+    }
+  }
 }
 
 @include tablet {
-    .card {
-        flex-direction: column;
 
-        &__image-wrapper {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-        }
+  .card {
+    flex-direction: column;
 
-        &__content {
-            padding-bottom: 0.5rem;
-            text-align: center;
-
-            &-title {
-                line-height: 3.5rem;
-
-                &__id { 
-                    border-top: 1px solid #000; 
-                    border-bottom: 1px solid #000; 
-                    padding: 0.25rem 0;
-                }
-            }
-            &-price {
-                margin: 0 0 0.5rem;
-            }
-        }
+    &__image-wrapper {
+      height: auto;
+      max-width: 100%;
+      width: 100%;
     }
+
+    &__content {
+      padding-bottom: .5rem;
+      text-align: center;
+
+      &-title {
+        line-height: 3.5rem;
+
+
+      }
+
+      &__content__id { 
+        border-bottom: 1px solid #000; 
+        border-top: 1px solid #000; 
+        padding: .25rem 0;
+      }
+
+      &-price {
+        margin: 0 0 .5rem;
+      }
+    }
+  }
 }

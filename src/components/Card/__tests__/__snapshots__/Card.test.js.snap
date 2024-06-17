@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match the snapshot 1`] = `
+<body>
+  <div>
+    <article
+      class="card"
+    >
+      <div
+        class="card__image-wrapper"
+      >
+        <picture
+          class="card__image-wrapper__picture"
+        >
+          <source
+            class="card__picture-source"
+            media="(max-width: 767px)"
+            srcset="/images/1x1/smallImage.jpg"
+          />
+          <source
+            class="card__picture-source"
+            media="(min-width: 768px)"
+            srcset="/images/16x9/largeImage.jpg"
+          />
+          <img
+            alt="image"
+            class="card__image-wrapper__picture__img"
+            src="/images/16x9/largeImage.jpg"
+          />
+        </picture>
+      </div>
+      <div
+        class="card__content"
+      >
+        <h2
+          class="card__content-title"
+        >
+          <span
+            class="card__content-title__id"
+          >
+            1
+          </span>
+        </h2>
+        <p
+          class="card__content-price"
+        >
+          From
+          £100
+        </p>
+        <p
+          class="card__content-description"
+        >
+          A lovely vehicle
+        </p>
+      </div>
+    </article>
+  </div>
+</body>
+`;
